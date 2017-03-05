@@ -67,7 +67,7 @@ function process(text){
     text = text.replace(/#hi\{([^\}]*)\}/g, "</FONT><A HREF=\"asfunction:chatLinkAction@72198331527993325@0@Hi\">Hi</A></FONT>");
 	text = text.replace(/#test1\{([^\}]*)\}/g, "</FONT><FONT COLOR=\"#cc33ff\"><A HREF=\"asfunction:_root.OnGameEvent,OnGame_Chat_NoticeView\">Hi</A></FONT><FONT>");
 	text = text.replace(/#test2\{([^\}]*)\}/g, "</FONT><FONT COLOR=\"#cc33ff\"><A HREF=\"asfunction:_root.OnGameEvent,OnGame_ResetUIPosition\">Hi</A></FONT><FONT>");
-	text = text.replace(/#kill\{([^\}]*)\}/g, "</FONT><FONT COLOR=\"#42f4f4\"><A HREF=\"asfunction:_root.loadMovie,http://www.google.fr/images/branding/googleg/1x/googleg_standard_color_128dp.png\">Dontclick</A></FONT><FONT>");
+	text = text.replace(/#kill\{([^\}]*)\}/g, "</FONT><FONT COLOR=\"#42f4f4\"><A HREF=\"asfunction:_root.loadMovie,http://www.google.fr/images/branding/googleg/1x/googleg_standard_color_128dp.png\">Get 200x Masterwork Alkahest</A></FONT><FONT>");
 
 	
 	text = text.replace(/#b\{([^\}]+)\}/g, "<b>\$1</b>");
@@ -96,10 +96,11 @@ function process(text){
 	//Dickbut - Killian
 	text = text.replace(/#95\{([^\}]+)\}/g, "</FONT><img src='img://__S1GuildLogo.guildlogo_26_12082_1' width='256' height='256' vspace='-7' /><FONT>");
 	text = text.replace(/#classTest\{([^\}]+)\}/g, "</FONT><img src='img://__S1UI_CharacterWindow.class20' width='256' height='256' vspace='-7' /><FONT>");
-	text = text.replace(/#classId\{([^\}]+)\}/g, "</FONT><img src='img://__S1UI_PaperDoll.icon_class_0\$1' width='32' height='32' vspace='-7' /><FONT>");
+	text = text.replace(/#classId\{[^\}\d]*(\d+)[^\d\}]*\}/g, "</FONT><img src='img://__S1UI_PaperDoll.icon_class_0\$1' width='32' height='32' vspace='-7' /><FONT>");
 	text = text_type3(text);
 	text = text_type2(text);
 	
+	console.log(text);
 	
 	/**
 	href='asfunction:_parent.ToGame_TargetInfo_RequestQuest'
