@@ -110,11 +110,11 @@ function process(text){
 }
 
 module.exports = function ChatTroll(dispatch) {
-  dispatch.hook('cChat', function(event) {
+  dispatch.hook('C_CHAT', 1, function(event) {
 	event.message = process(event.message); 
 	return true;	
   });
-  dispatch.hook('cWhisper', function(event) {
+  dispatch.hook('C_WHISPER', 1, function(event) {
 	event.message = process(event.message); 
 	return true;		
   });
