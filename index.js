@@ -97,6 +97,13 @@ function process(text){
 	text = text.replace(/#95\{([^\}]+)\}/g, "</FONT><img src='img://__S1GuildLogo.guildlogo_26_12082_1' width='256' height='256' vspace='-7' /><FONT>");
 	text = text.replace(/#classTest\{([^\}]+)\}/g, "</FONT><img src='img://__S1UI_CharacterWindow.class20' width='256' height='256' vspace='-7' /><FONT>");
 	text = text.replace(/#classId\{[^\}\d]*(\d+)[^\d\}]*\}/g, "</FONT><img src='img://__S1UI_PaperDoll.icon_class_0\$1' width='32' height='32' vspace='-7' /><FONT>");
+	text = text.replace(/#blackLeft\{t\}/g, "</FONT><img src='img://abonormality__950164' width='64' height='64' vspace='-7' /> - <img src='img://abonormality__950165' width='64' height='64' vspace='-7' /><FONT>");
+	text = text.replace(/#blackRight\{t\}/g, "</FONT><img src='img://abonormality__950165' width='64' height='64' vspace='-7' /> - <img src='img://abonormality__950164' width='64' height='64' vspace='-7' /><FONT>");
+	//text = text.replace(/#RblackLeft\{t\}/g, "</FONT><img src='img://abonormality__950164' width='64' height='64' vspace='-7' /> - <img src='img://abonormality__950165' width='64' height='64' vspace='-7' /><FONT>");
+	//text = text.replace(/#RblackRight\{t\}/g, "</FONT><img src='img://abonormality__950165' width='64' height='64' vspace='-7' /> - <img src='img://abonormality__950164' width='64' height='64' vspace='-7' /><FONT>");
+	text = text.replace(/#RblackLeft\{t\}/g, "black - red");
+	text = text.replace(/#RblackRight\{t\}/g, "red - black");
+
 	text = text_type3(text);
 	text = text_type2(text);
 	
@@ -111,7 +118,16 @@ function process(text){
 
 module.exports = function ChatTroll(dispatch) {
   dispatch.hook('C_CHAT', 1, function(event) {
+	  var match1 = event.message.search(/#RblackLeft\{t\}/g);
+	var match2 = event.message.search(/#RblackRight\{t\}/g);
+	//console.log(match1);
+	//console.log(match2);	
 	event.message = process(event.message); 
+	
+	if(match1 !== -1 || match2 !== -1){
+		event.channel = 32;
+		//event.message = "not a test";
+	}
 	return true;	
   });
   dispatch.hook('C_WHISPER', 1, function(event) {
